@@ -7,6 +7,6 @@ dependencies:
   - pip
   - pip:
     - nbgitpuller
-    - 
+    - datamatrix
     - pandas
     - matplotlib
