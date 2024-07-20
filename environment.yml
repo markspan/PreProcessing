@@ -1,7 +1,9 @@
+name:
+  - myname
 channels:
   - conda-forge
 dependencies:
   - conda=24.5.0
-  - python=3.12
+  - python=3.11
   - traitlets=5.14.3
   - datamatrix
