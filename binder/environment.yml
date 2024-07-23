@@ -11,4 +11,4 @@ dependencies:
   - matplotlib
   - rpy2
   - datamatrix
-  - eyelinkparser
+  
