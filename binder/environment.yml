@@ -7,6 +7,6 @@ dependencies:
   - python=3.11
   - numpy
   - matplotlib
-  - eyelinkparser
+  - python-eyelinkparser
   - rpy2
   - datamatrix
