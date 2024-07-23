@@ -2,7 +2,6 @@ name:
   - DCAC
 channels:
   - conda-forge
-  - default
   - CogSci
 dependencies:
   - conda=24.5.0
@@ -11,5 +10,3 @@ dependencies:
   - matplotlib
   - rpy2
   - datamatrix
-  - RStudio
-  - jupyter-rsession-proxy
