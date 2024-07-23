@@ -2,7 +2,7 @@ name:
   - DCAC
 channels:
   - conda-forge
-  - defaults
+  - default
   - CogSci
 dependencies:
   - conda=24.5.0
@@ -11,4 +11,4 @@ dependencies:
   - matplotlib
   - rpy2
   - datamatrix
-  - eeg_eyetracking_parser
+  - eyelinkparser
