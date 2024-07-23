@@ -2,10 +2,11 @@ name:
   - DCAC
 channels:
   - conda-forge
+  - default
   - CogSci
 dependencies:
   - conda=24.5.0
-  - python=3.11
+  - python=3.12.4
   - numpy
   - matplotlib
   - rpy2
