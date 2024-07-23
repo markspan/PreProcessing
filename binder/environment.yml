@@ -11,4 +11,5 @@ dependencies:
   - matplotlib
   - rpy2
   - datamatrix
-  
+  - RStudio
+  - jupyter-rsession-proxy
