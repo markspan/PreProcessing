@@ -13,5 +13,6 @@ dependencies:
   - nodejs
   - rpy2
   - scipy
+  - pandas
   - datamatrix=1.0.13
 
