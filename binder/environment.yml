@@ -4,10 +4,14 @@ channels:
   - conda-forge
   - default
   - CogSci
+  - Open-CogSci
 dependencies:
   - conda=24.5.0
   - python=3.12.4
   - numpy
   - matplotlib
+  - ipywidgets
+  - nodejs
   - rpy2
-  - datamatrix
+  - datamatrix=1.0.13
+
