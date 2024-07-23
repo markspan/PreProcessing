@@ -12,5 +12,6 @@ dependencies:
   - ipywidgets
   - nodejs
   - rpy2
+  - scipy
   - datamatrix=1.0.13
 
