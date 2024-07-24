@@ -2,17 +2,75 @@ name:
   - DCAC
 channels:
   - conda-forge
-  - default
   - CogSci
+  - anaconda
 dependencies:
+channels:
+  - conda-forge
+  - anaconda
+  - defaults
+dependencies:
+  - numpy
+  - pandas
+  - scipy
+  - matplotlib
+  - seaborn
+  - plotly
+  - scikit-learn
+  - tensorflow
+  - keras
+  - pytorch
+  - torchvision
+  - xgboost
+  - lightgbm
+  - catboost
+  - nltk
+  - spacy
+  - gensim
+  - jupyter
+  - jupyterlab
+  - ipython
+  - ipywidgets
+  - bokeh
+  - holoviews
+  - datashader
+  - dask
+  - joblib
+  - statsmodels
+  - scikit-image
+  - opencv
+  - pillow
+  - numba
+  - networkx
+  - sqlite
+  - sqlalchemy
+  - psycopg2
+  - mysql-connector-python
+  - h5py
+  - requests
+  - beautifulsoup4
+  - lxml
+  - html5lib
+  - scrapy
+  - graphviz
+  - python-graphviz
+  - python-Levenshtein
+  - multiprocess
+  - openpyxl
+  - xlrd
+  - xlwt
+  - feather-format
+  - pyarrow
+  - fastparquet
+  - snappy
+  - lz4
+  - blosc
+  - conda-pack
   - conda=24.5.0
   - python=3.12.4
-  - numpy
   - matplotlib
   - ipywidgets
   - nodejs
   - rpy2
-  - scipy
-  - pandas
   - datamatrix=1.0.13
 

@@ -1,2 +1,2 @@
-davfs2
 mc
+thefuck
