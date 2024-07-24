@@ -1,2 +1,5 @@
 mc
+build-essential 
+python-dev
+libfuse
 thefuck
