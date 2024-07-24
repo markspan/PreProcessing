@@ -74,5 +74,5 @@ dependencies:
   - r-shiny
   - r-foreign
   - r-dplyr
-  - r=Hmisc
+  - r-hmisc
 
