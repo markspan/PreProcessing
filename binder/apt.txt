@@ -2,3 +2,4 @@ mc
 build-essential 
 fuse
 thefuck
+vagrant
