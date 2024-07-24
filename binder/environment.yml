@@ -75,4 +75,4 @@ dependencies:
   - r-foreign
   - r-dplyr
   - r-hmisc
-
+  - jupyterlab-remote-contents
