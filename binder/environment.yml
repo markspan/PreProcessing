@@ -68,4 +68,11 @@ dependencies:
   - nodejs
   - rpy2
   - datamatrix=1.0.13
+  - r-base
+  - r-tidyverse
+  - r-ggplot2
+  - r-shiny
+  - r-foreign
+  - r-dplyr
+  - r=Hmisc
 
