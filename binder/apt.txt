@@ -1,5 +1,4 @@
 mc
 thefuck
 msttcorefonts 
-mscorefonts
 font-manager
