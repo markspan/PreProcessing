@@ -1,5 +1,4 @@
 mc
-build-essential 
-fuse
 thefuck
-vagrant
+msttcorefonts 
+font-manager
