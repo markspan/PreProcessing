@@ -1,0 +1,467 @@
+---
+API: 3
+OpenSesame: 4.0.5
+Platform: nt
+---
+set width 1024
+set uniform_coordinates yes
+set title "DCAC Demo experiment"
+set subject_parity even
+set subject_nr 0
+set start experiment
+set sound_sample_size -16
+set sound_freq 48000
+set sound_channels 2
+set sound_buf_size 1024
+set sampler_backend legacy
+set round_decimals 2
+set mouse_backend xpyriment
+set keyboard_backend legacy
+set height 768
+set fullscreen no
+set form_clicks no
+set foreground white
+set font_underline no
+set font_size 20
+set font_italic no
+set font_family mono
+set font_bold no
+set experiment_path "C:/Users/P154492/Desktop/DCAC/2023-2024/Week 2"
+set disable_garbage_collection yes
+set description "A template for eye-tracking experiments"
+set coordinates relative
+set compensation 0
+set color_backend legacy
+set clock_backend legacy
+set canvas_backend xpyriment
+set bidi yes
+set background gray
+
+define notepad README
+	__note__
+	Data Collection and Analysis for Cognitive Neuroscience at the University of Groningen
+	Author: Robbert van der Mijn, w.r.van.der.mijn@rug.nl
+	Aug 2022 MMS: Aug 2023 
+	
+	This experiment is based on the Pygaze example experiment.
+	__end__
+	set description "A simple notepad to document your experiment. This plug-in does nothing."
+
+define sketchpad baseline
+	set duration 1500
+	set description "Displays stimuli"
+	draw fixdot color=white show_if=always style=default x=0 y=0 z_index=0
+
+define feedback block_feedback
+	set reset_variables yes
+	set duration keypress
+	set description "Provides feedback to the participant"
+	draw textline center=1 color=white font_bold=no font_family=mono font_italic=no font_size=18 html=yes show_if=always text="Your average response time was [avg_rt]ms" x=0 y=-96 z_index=0
+	draw textline center=1 color=white font_bold=no font_family=mono font_italic=no font_size=18 html=yes show_if=always text="Press any key to continue" x=0 y=32 z_index=0
+	draw textline center=1 color=white font_bold=no font_family=mono font_italic=no font_size=18 html=yes show_if=always text="Your accuracy was [acc]%" x=0 y=-32 z_index=0
+
+define loop block_loop
+	set source_file ""
+	set source table
+	set skip 0
+	set repeat "[block_repeat]"
+	set order random
+	set offset no
+	set item trial_sequence
+	set description "A single block of trials"
+	set cycles 40
+	set continuous no
+	set column_order ""
+	set break_if_on_first yes
+	set break_if never
+	setcycle 0 correct_response f
+	setcycle 0 difficulty easy
+	setcycle 0 problem "2+4"
+	setcycle 0 solution 6
+	setcycle 1 correct_response f
+	setcycle 1 difficulty easy
+	setcycle 1 problem "5+2"
+	setcycle 1 solution 7
+	setcycle 2 correct_response f
+	setcycle 2 difficulty easy
+	setcycle 2 problem "2+6"
+	setcycle 2 solution 8
+	setcycle 3 correct_response f
+	setcycle 3 difficulty easy
+	setcycle 3 problem "7+2"
+	setcycle 3 solution 9
+	setcycle 4 correct_response f
+	setcycle 4 difficulty easy
+	setcycle 4 problem "3+4"
+	setcycle 4 solution 7
+	setcycle 5 correct_response j
+	setcycle 5 difficulty easy
+	setcycle 5 problem "5+3"
+	setcycle 5 solution 9
+	setcycle 6 correct_response j
+	setcycle 6 difficulty easy
+	setcycle 6 problem "3+6"
+	setcycle 6 solution 8
+	setcycle 7 correct_response j
+	setcycle 7 difficulty easy
+	setcycle 7 problem "4+4"
+	setcycle 7 solution 7
+	setcycle 8 correct_response j
+	setcycle 8 difficulty easy
+	setcycle 8 problem "5+4"
+	setcycle 8 solution 8
+	setcycle 9 correct_response j
+	setcycle 9 difficulty easy
+	setcycle 9 problem "1+2"
+	setcycle 9 solution 2
+	setcycle 10 correct_response f
+	setcycle 10 difficulty hard
+	setcycle 10 problem "72+38"
+	setcycle 10 solution 110
+	setcycle 11 correct_response f
+	setcycle 11 difficulty hard
+	setcycle 11 problem "85+93"
+	setcycle 11 solution 178
+	setcycle 12 correct_response f
+	setcycle 12 difficulty hard
+	setcycle 12 problem "56+89"
+	setcycle 12 solution 145
+	setcycle 13 correct_response f
+	setcycle 13 difficulty hard
+	setcycle 13 problem "44+78"
+	setcycle 13 solution 122
+	setcycle 14 correct_response f
+	setcycle 14 difficulty hard
+	setcycle 14 problem "93+89"
+	setcycle 14 solution 182
+	setcycle 15 correct_response j
+	setcycle 15 difficulty hard
+	setcycle 15 problem "36+84"
+	setcycle 15 solution 130
+	setcycle 16 correct_response j
+	setcycle 16 difficulty hard
+	setcycle 16 problem "66+77"
+	setcycle 16 solution 144
+	setcycle 17 correct_response j
+	setcycle 17 difficulty hard
+	setcycle 17 problem "91+33"
+	setcycle 17 solution 134
+	setcycle 18 correct_response j
+	setcycle 18 difficulty hard
+	setcycle 18 problem "65+38"
+	setcycle 18 solution 113
+	setcycle 19 correct_response j
+	setcycle 19 difficulty hard
+	setcycle 19 problem "28+88"
+	setcycle 19 solution 106
+	setcycle 20 correct_response f
+	setcycle 20 difficulty easy
+	setcycle 20 problem "2+3"
+	setcycle 20 solution 5
+	setcycle 21 correct_response f
+	setcycle 21 difficulty easy
+	setcycle 21 problem "6+3"
+	setcycle 21 solution 9
+	setcycle 22 correct_response f
+	setcycle 22 difficulty easy
+	setcycle 22 problem "1+6"
+	setcycle 22 solution 7
+	setcycle 23 correct_response f
+	setcycle 23 difficulty easy
+	setcycle 23 problem "6+2"
+	setcycle 23 solution 8
+	setcycle 24 correct_response f
+	setcycle 24 difficulty easy
+	setcycle 24 problem "1+4"
+	setcycle 24 solution 5
+	setcycle 25 correct_response j
+	setcycle 25 difficulty easy
+	setcycle 25 problem "4+3"
+	setcycle 25 solution 9
+	setcycle 26 correct_response j
+	setcycle 26 difficulty easy
+	setcycle 26 problem "3+5"
+	setcycle 26 solution 7
+	setcycle 27 correct_response j
+	setcycle 27 difficulty easy
+	setcycle 27 problem "3+3"
+	setcycle 27 solution 7
+	setcycle 28 correct_response j
+	setcycle 28 difficulty easy
+	setcycle 28 problem "5+3"
+	setcycle 28 solution 9
+	setcycle 29 correct_response j
+	setcycle 29 difficulty easy
+	setcycle 29 problem "3+1"
+	setcycle 29 solution 5
+	setcycle 30 correct_response f
+	setcycle 30 difficulty hard
+	setcycle 30 problem "61+32"
+	setcycle 30 solution 93
+	setcycle 31 correct_response f
+	setcycle 31 difficulty hard
+	setcycle 31 problem "60+44"
+	setcycle 31 solution 104
+	setcycle 32 correct_response f
+	setcycle 32 difficulty hard
+	setcycle 32 problem "84+29"
+	setcycle 32 solution 113
+	setcycle 33 correct_response f
+	setcycle 33 difficulty hard
+	setcycle 33 problem "60+26"
+	setcycle 33 solution 86
+	setcycle 34 correct_response f
+	setcycle 34 difficulty hard
+	setcycle 34 problem "12+11"
+	setcycle 34 solution 23
+	setcycle 35 correct_response j
+	setcycle 35 difficulty hard
+	setcycle 35 problem "52+14"
+	setcycle 35 solution 67
+	setcycle 36 correct_response j
+	setcycle 36 difficulty hard
+	setcycle 36 problem "30+12"
+	setcycle 36 solution 44
+	setcycle 37 correct_response j
+	setcycle 37 difficulty hard
+	setcycle 37 problem "26+12"
+	setcycle 37 solution 48
+	setcycle 38 correct_response j
+	setcycle 38 difficulty hard
+	setcycle 38 problem "32+14"
+	setcycle 38 solution 36
+	setcycle 39 correct_response j
+	setcycle 39 difficulty hard
+	setcycle 39 problem "58+38"
+	setcycle 39 solution 86
+	run trial_sequence
+
+define sequence block_sequence
+	set flush_keyboard yes
+	set description "A sequence containing a single block of trials followed by feedback to the participant"
+	run reset_feedback always
+	run block_loop always
+	run block_feedback always
+
+define sketchpad drift_correction
+	set start_response_interval no
+	set duration 0
+	set description "Displays stimuli"
+	draw fixdot color=white show_if=always style=default x=0 y=0 z_index=0
+
+define sketchpad end_of_experiment
+	set start_response_interval no
+	set duration keypress
+	set description "A sketchpad notifying the participant that the experiment is finished"
+	draw textline center=1 color=white font_bold=no font_family=mono font_italic=no font_size=18 html=yes show_if=always text="This is the end of the experiment. Thank you for participating!<br />Press any key to exit." x=0 y=0 z_index=0
+
+define sketchpad end_of_practice
+	set start_response_interval no
+	set duration keypress
+	set description "A sketchpad notifying the participant that the practice phase is finished"
+	draw textline center=1 color=white font_bold=no font_family=mono font_italic=no font_size=18 html=yes show_if=always text="These were the practice trials.<br /><br />Press any key to continue with the experiment." x=0 y=0 z_index=0
+
+define sequence experiment
+	set flush_keyboard yes
+	set description "The main sequence of the experiment"
+	run README always
+	run pygaze_init always
+	run instructions always
+	run practice_loop always
+	run end_of_practice always
+	run experimental_loop always
+	run end_of_experiment always
+
+define loop experimental_loop
+	set source_file ""
+	set source table
+	set skip 0
+	set repeat 1
+	set order random
+	set offset no
+	set item block_sequence
+	set description "A loop containing one or more experimental blocks"
+	set cycles 1
+	set continuous no
+	set column_order practice
+	set break_if_on_first yes
+	set break_if never
+	setcycle 0 block_repeat 1
+	setcycle 0 practice no
+	run block_sequence
+
+define sketchpad fixation
+	set duration 1500
+	set description "Displays stimuli"
+	draw fixdot color=white show_if=always style=default x=0 y=0 z_index=0
+
+define sketchpad instructions
+	set start_response_interval no
+	set duration keypress
+	set description "A sketchpad containing the instructions for the participant"
+	draw textline center=1 color=white font_bold=no font_family=mono font_italic=no font_size=18 html=yes show_if=always text="In this experiment, you will solve addition problems (e.g. 5+2). <br />After the problem is presented, you will see a potential solution. <br />Your task is to report whether the solution is correct. <br />Press F for correct and J for incorrect.<br /><br />First you will do a couple of practice trials. Press any key to begin!" x=0 y=0 z_index=0
+	draw textline center=1 color=white font_bold=no font_family=mono font_italic=no font_size=18 html=yes show_if=always text=Instructions x=0 y=-320 z_index=0
+
+define keyboard_response keyboard_response
+	set timeout infinite
+	set flush yes
+	set event_type keypress
+	set duration keypress
+	set description "Collects keyboard responses"
+	set correct_response "[correct_response]"
+	set allowed_responses "f;j"
+
+define pygaze_log log_baseline
+	set throttle 2
+	set msg "start_phase baseline"
+	set description "Writes information to the eye-tracker logfile"
+	set auto_log no
+
+define pygaze_log log_endtrial
+	set throttle 2
+	set msg "end_phase feedback"
+	set description "Writes information to the eye-tracker logfile"
+	set auto_log no
+
+define pygaze_log log_fixation
+	set throttle 2
+	__msg__
+	end_phase problem
+	start_phase fixation
+	__end__
+	set description "Writes information to the eye-tracker logfile"
+	set auto_log no
+
+define pygaze_log log_phase
+	set throttle 2
+	__msg__
+	end_phase response
+	start_phase feedback
+	__end__
+	set description "Writes information to the eye-tracker logfile"
+	set auto_log no
+
+define pygaze_log log_problem
+	set throttle 2
+	__msg__
+	end_phase baseline
+	start_phase problem
+	__end__
+	set description "Writes information to the eye-tracker logfile"
+	set auto_log no
+
+define pygaze_log log_response
+	set throttle 2
+	__msg__
+	end_phase fixation
+	start_phase response
+	__end__
+	set description "Writes information to the eye-tracker logfile"
+	set auto_log no
+
+define logger logger
+	set description "Logs experimental data"
+	set auto_log yes
+
+define loop practice_loop
+	set source_file ""
+	set source table
+	set skip 0
+	set repeat 1
+	set order random
+	set offset no
+	set item block_sequence
+	set description "A loop containing one or more practice blocks"
+	set cycles 1
+	set continuous no
+	set column_order practice
+	set break_if_on_first yes
+	set break_if never
+	setcycle 0 block_repeat 0.1
+	setcycle 0 practice yes
+	run block_sequence
+
+define sketchpad problem
+	set duration 800
+	set description "Displays stimuli"
+	draw textline center=1 color=white font_bold=no font_family=mono font_italic=no font_size=23 html=yes show_if=always text="[problem]" x=0 y=0 z_index=0
+
+define pygaze_drift_correct pygaze_drift_correct
+	set ypos 0
+	set xpos 0
+	set target_style "small-cross"
+	set target_color "[foreground]"
+	set fixation_triggered yes
+	set draw_target no
+	set description "Perform eye-tracker drift correction"
+
+define pygaze_init pygaze_init
+	set tracker_type "Advanced dummy (mouse simulation)"
+	set tobiiglasses_udpport 49152
+	set tobiiglasses_address "192.168.71.50"
+	set smi_send_port 4444
+	set smi_recv_port 5555
+	set smi_ip "127.0.0.1"
+	set sacc_vel_thr 35
+	set sacc_acc_thr 9500
+	set eyelink_pupil_size_mode area
+	set eyelink_force_drift_correct yes
+	set description "Initialize and calibrate eye tracker"
+	set calibrate yes
+	set calbeep yes
+	set alea_api_key "Contact Alea for an API key"
+	set alea_animated_calibration no
+	set _logfile automatic
+
+define pygaze_log pygaze_log
+	set throttle 2
+	set msg ""
+	set description "Writes information to the eye-tracker logfile"
+	set auto_log yes
+
+define pygaze_start_recording pygaze_start_recording
+	set status_msg "start_trial [count_trial_sequence]"
+	set description "Puts the eye tracker into recording mode"
+
+define pygaze_stop_recording pygaze_stop_recording
+	set status_msg stop_trial
+	set description "Stops recording of eye tracking data"
+
+define reset_feedback reset_feedback
+	set description "Resets the feedback variables, such as 'avg_rt' and 'acc'"
+
+define sketchpad solution
+	set duration 0
+	set description "Displays stimuli"
+	draw textline center=1 color=white font_bold=no font_family=mono font_italic=no font_size=23 html=yes show_if=always text="[solution]" x=0 y=0 z_index=0
+	draw textline center=1 color=white font_bold=no font_family=mono font_italic=no font_size=23 html=yes show_if=always text="Press F for correct<br />Press J for incorrect" x=0 y=128 z_index=0
+
+define feedback trial_feedback
+	set reset_variables no
+	set duration 1000
+	set description "Provides feedback to the participant"
+	draw textline center=1 color=green font_bold=no font_family=mono font_italic=no font_size=18 html=yes show_if="[correct] = 1" text=Correct x=0 y=0 z_index=0
+	draw textline center=1 color=red font_bold=no font_family=mono font_italic=no font_size=18 html=yes show_if="[correct] = 0" text=Incorrect x=0 y=0 z_index=0
+
+define sequence trial_sequence
+	set flush_keyboard yes
+	set description "A single trial"
+	run drift_correction True
+	run pygaze_drift_correct False
+	run pygaze_start_recording always
+	run log_baseline always
+	run baseline always
+	run log_problem always
+	run problem always
+	run log_fixation always
+	run fixation always
+	run log_response always
+	run solution always
+	run keyboard_response always
+	run log_phase always
+	run trial_feedback always
+	run log_endtrial always
+	run logger always
+	run pygaze_log always
+	run pygaze_stop_recording always
+
