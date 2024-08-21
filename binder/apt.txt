@@ -1,3 +1,4 @@
+apt-utils
 mc
 thefuck
 msttcorefonts 
