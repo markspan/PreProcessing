@@ -12,14 +12,10 @@ dependencies:
   - seaborn
   - plotly
   - scikit-learn
-  - tensorflow
   - keras
-  - pytorch
-  - torchvision
   - xgboost
   - lightgbm
   - catboost
-  - nltk
   - spacy
   - gensim
   - jupyter
@@ -27,7 +23,6 @@ dependencies:
   - ipython
   - ipywidgets
   - bokeh
-  - holoviews
   - datashader
   - dask
   - joblib
@@ -47,9 +42,7 @@ dependencies:
   - lxml
   - html5lib
   - scrapy
-  - graphviz
-  - python-graphviz
-  - python-Levenshtein
+  - xeus-octave
   - multiprocess
   - openpyxl
   - xlrd
