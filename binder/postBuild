@@ -2,3 +2,4 @@ pip install eyelinkparser
 pip install time_series_test
 conda install xeus-octave -c conda-forge
 conda install mne -c conda-forge
+git clone --recurse-submodules https://github.com/sccn/eeglab.git
