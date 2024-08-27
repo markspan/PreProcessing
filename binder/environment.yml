@@ -61,13 +61,13 @@ dependencies:
   - lz4
   - blosc
   - conda-pack
-  - conda=24.5.0
-  - python=3.12.4
+  - conda
+  - python
   - matplotlib
   - ipywidgets
   - nodejs
   - rpy2
-  - datamatrix=1.0.13
+  - datamatrix
   - r-base
   - r-tidyverse
   - r-ggplot2
@@ -75,4 +75,7 @@ dependencies:
   - r-foreign
   - r-dplyr
   - r-hmisc
+  - r-plyr
+  - r-reshape2
+  - r-bsicons
 
