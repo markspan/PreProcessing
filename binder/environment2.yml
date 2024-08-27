@@ -1,0 +1,19 @@
+name:
+  - DCAC
+channels:
+  - conda-forge
+  - CogSci
+  - anaconda
+dependencies:
+  - numpy
+  - pandas
+  - scipy
+  - matplotlib
+  - plotly
+  - jupyterlab
+  - ipython
+  - numba
+  - xeus-octave
+  - python
+
+

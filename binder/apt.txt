@@ -1,5 +1,5 @@
-apt-utils
-mc
-thefuck
-msttcorefonts 
-font-manager
+#apt-utils
+#mc
+#thefuck
+#msttcorefonts 
+#font-manager
