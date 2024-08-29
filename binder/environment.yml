@@ -70,5 +70,4 @@ dependencies:
   - r-plyr
   - r-reshape2
   - r-bsicons
-  - pip:
-      - git+https://github.com/sccn/eeglab.git
+ 
