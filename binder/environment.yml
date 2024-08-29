@@ -13,6 +13,7 @@ dependencies:
   - plotly
   - scikit-learn
   - keras
+  - gdown
   - xgboost
   - lightgbm
   - catboost

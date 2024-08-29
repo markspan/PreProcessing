@@ -1,1 +1,1 @@
-git clone --recurse-submodules https://github.com/sccn/eeglab.git
+# git clone --recurse-submodules https://github.com/sccn/eeglab.git
