@@ -1,7 +1,7 @@
 apt-utils
 mc
 build-essential 
-python-dev
+python2-dev
 #thefuck
 msttcorefonts 
 font-manager
