@@ -61,6 +61,8 @@ dependencies:
   - ipywidgets
   - rpy2
   - datamatrix
+  - eyelinkparser
+  - time_series_test
   - r-base
   - r-tidyverse
   - r-ggplot2
