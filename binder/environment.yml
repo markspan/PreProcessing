@@ -60,6 +60,7 @@ dependencies:
   - matplotlib
   - ipywidgets
   - rpy2
+  - gdrivefs
   - datamatrix
   - r-base
   - r-tidyverse
