@@ -1,7 +1,7 @@
 apt-utils
 mc
-build-essential 
-python2-dev
+#build-essential 
+#python2-dev
 #fuse
 #thefuck
 msttcorefonts 
