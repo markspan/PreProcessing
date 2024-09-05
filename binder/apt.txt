@@ -2,8 +2,8 @@ apt-utils
 mc
 build-essential 
 python2-dev
-fuse
+#fuse
 #thefuck
 msttcorefonts 
 font-manager
-cmake
+#cmake

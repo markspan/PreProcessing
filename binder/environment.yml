@@ -43,7 +43,6 @@ dependencies:
   - lxml
   - html5lib
   - scrapy
-  - xeus-octave
   - multiprocess
   - openpyxl
   - xlrd
@@ -59,17 +58,6 @@ dependencies:
   - python
   - matplotlib
   - ipywidgets
-  - rpy2
   - datamatrix
-  - mne[hdf5]
-  - r-base
-  - r-tidyverse
-  - r-ggplot2
-  - r-shiny
-  - r-foreign
-  - r-dplyr
-  - r-hmisc
-  - r-plyr
-  - r-reshape2
-  - r-bsicons
+
  
