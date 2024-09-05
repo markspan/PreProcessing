@@ -5,59 +5,57 @@ channels:
   - CogSci
   - anaconda
 dependencies:
-  - numpy
-  - pandas
-  - scipy
-  - matplotlib
-  - seaborn
-  - plotly
-  - scikit-learn
-  - keras
-  - gdown
-  - xgboost
-  - lightgbm
+  - beautifulsoup4
+  - blosc
+  - bokeh
   - catboost
-  - spacy
+  - conda
+  - conda-pack
+  - dask
+  - datamatrix
+  - datashader
+  - fastparquet
+  - feather-format
+  - gdown
   - gensim
-  - jupyter
-  - jupyterlab
+  - h5py
+  - html5lib
   - ipython
   - ipywidgets
-  - bokeh
-  - datashader
-  - dask
   - joblib
-  - statsmodels
-  - scikit-image
-  - opencv
-  - pillow
-  - numba
-  - networkx
-  - sqlite
-  - sqlalchemy
-  - psycopg2
-  - mysql-connector-python
-  - h5py
-  - requests
-  - beautifulsoup4
+  - jupyter
+  - jupyterlab
+  - keras
+  - lightgbm
   - lxml
-  - html5lib
-  - scrapy
+  - lz4
+  - matplotlib
   - multiprocess
+  - mysql-connector-python
+  - networkx
+  - numba
+  - numpy
+  - opencv
   - openpyxl
+  - pandas
+  - pillow
+  - plotly
+  - psycopg2
+  - pyarrow
+  - python
+  - requests
+  - scikit-image
+  - scikit-learn
+  - scipy
+  - scrapy
+  - seaborn
+  - snappy
+  - spacy
+  - sqlalchemy
+  - sqlite
+  - statsmodels
+  - xgboost
   - xlrd
   - xlwt
-  - feather-format
-  - pyarrow
-  - fastparquet
-  - snappy
-  - lz4
-  - blosc
-  - conda-pack
-  - conda
-  - python
-  - matplotlib
-  - ipywidgets
-  - datamatrix
 
  
