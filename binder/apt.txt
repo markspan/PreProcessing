@@ -6,3 +6,4 @@ fuse
 #thefuck
 msttcorefonts 
 font-manager
+cmake
