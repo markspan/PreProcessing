@@ -6,4 +6,4 @@ mc
 #thefuck
 msttcorefonts 
 font-manager
-#cmake
+cmake
