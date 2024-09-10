@@ -7,4 +7,4 @@ mc
 msttcorefonts 
 font-manager
 cmake
-#./code_1.93.0-1725459079_amd64.deb
+libnss
