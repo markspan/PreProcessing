@@ -8,3 +8,9 @@ msttcorefonts
 font-manager
 cmake
 libnss3
+python3-opensesame 
+python3-rapunzel 
+python3-opensesame-extension-updater 
+python3-pygaze 
+python3-pygame 
+python3-opensesame-extension-language-server

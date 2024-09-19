@@ -3,8 +3,6 @@ name:
 channels:
   - conda-forge
   - CogSci
-  - ppa:smathot/cogscinl
-  - ppa:smathot/milgram
   - anaconda
 dependencies:
   - beautifulsoup4
