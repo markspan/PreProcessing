@@ -3,6 +3,8 @@ name:
 channels:
   - conda-forge
   - CogSci
+  - ppa:smathot/cogscinl
+  - ppa:smathot/milgram
   - anaconda
 dependencies:
   - beautifulsoup4
@@ -48,3 +50,8 @@ dependencies:
   - xgboost
   - xlrd
   - xlwt
+  - opensesame-extension-osweb 
+  - opensesame-plugin-psychopy 
+  - opensesame-plugin-media_player_mpy 
+  - http://files.cogsci.nl/expyriment-0.10.0+opensesame2-py3-none-any.whl
+  
