@@ -50,4 +50,5 @@ dependencies:
   - xlwt
   - pyxdf
   - mne
+  - ipympl
   

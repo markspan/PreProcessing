@@ -1,0 +1,189 @@
+import numpy as np
+from scipy.signal import find_peaks
+
+def pop_getIBI(ECGstruct, chan, par=None):
+    """
+    Detects the Inter-Beat Interval (IBI) values from an ECG trace using interpolation to achieve millisecond precision.
+    Inputs:
+        ECGstruct - Dictionary containing ECG data and relevant metadata.
+        par       - Dictionary of optional parameters to customize IBI detection.
+    Outputs:
+        ECGstruct - Updated structure with detected IBI events.
+        par       - Parameters used for IBI detection.
+    """
+	
+    ecgData = ECGstruct['data']
+    ecgTimestamps = ECGstruct['times']
+    ecgid = chan  # Default to the first channel if not found
+
+    ecgData = ecgData[ecgid, :]
+    fSample = ECGstruct['srate']
+
+    par['MinPeakHeight'] = np.nanmedian(ecgData) + 2 * np.nanstd(ecgData)
+    # Convert MinPeakDistance from ms to samples
+    MinPeakDistance = int(par['MinPeakDistance'] * fSample)
+
+    # Find approximate peaks
+    peaks, _ = find_peaks(ecgData, height=par['MinPeakHeight'], distance=MinPeakDistance)
+    vals = ecgData[peaks]
+    print(f"*found {len(vals)} r-tops")
+
+    # Calculate correction for peak times
+    rc = np.maximum(np.abs(vals - ecgData[peaks - 1]), np.abs(ecgData[peaks + 1] - vals))
+    try:
+        correction = (ecgData[peaks + 1] - ecgData[peaks - 1]) / (2 * fSample) / np.abs(rc)
+    except ZeroDivisionError:
+        raise ZeroDivisionError("rc is zero at some point in the data")
+
+    # Adjust event times with correction
+    if ecgTimestamps[peaks].shape[0] == correction.shape[0]:
+        ecgTimestamps = ecgTimestamps.T
+
+    classID = IBIClassification(ecgTimestamps[peaks] + correction, par['Tw'], par['Nsd'], par['Tmax'])
+    cRTopTimes, ecgData, classID = RTCorrection(ecgTimestamps[peaks] + correction, ecgData[peaks], classID)
+
+    # Update ECG structure with detected IBI events
+    if 'IBIevent' in ECGstruct:
+        i = min(len(ECGstruct['IBIevent']) + 1, 2)
+        for ie, event in enumerate(ECGstruct['IBIevent']):
+            if event['channelname'].lower() == par['channame'].lower():
+                i = ie
+        ECGstruct['IBIevent'][i] = {
+            'channelname': par['channame'],
+            'RTopTime': cRTopTimes,
+            'RTopVal': ecgData,
+            'ibis': np.round(np.diff(cRTopTimes), 3),
+            'classID': classID
+        }
+    else:
+        ECGstruct['IBIevent'] = [{
+            'channelname': par['channame'],
+            'RTopTime': cRTopTimes,
+            'RTopVal': ecgData,
+            'ibis': np.round(np.diff(cRTopTimes), 3),
+            'classID': classID
+        }]
+
+    return ECGstruct, par
+
+
+def RTCorrection(RTin, ecgData, classID):
+    """
+    Corrects R-top times and interpolates to handle short and long IBIs.
+    """
+    RTout = np.copy(RTin)
+    for i in range(len(classID) - 1):
+        if classID[i] == "S":
+            RTout[i] = 0  # Mark for removal
+            ecgData[i] = np.nan
+            classID[i] = ""
+        if classID[i] == "L":
+            if i > 1:
+                delta = ecgData[i] / np.mean([ecgData[i - 1], ecgData[i + 1]])
+                if delta > 2.0:
+                    # Interpolate a beat after this one and recalculate this IBI
+                    nRt = np.mean([RTin[i], RTin[i + 1]])
+                    nIBI = ecgData[i] / 2
+                    RTout = np.insert(RTout, i + 1, nRt)
+                    classID[i] = 't'  # Mark as interpolated, previously long IBI
+                    ecgData = np.insert(ecgData, i + 1, nIBI)
+                    classID = np.insert(classID, i + 1, 'i')
+    
+    classID = [id for id in classID if id]  # Remove empty classifications
+    RTout = RTout[RTout != 0]  # Remove marked R-top times
+    ecgData = ecgData[~np.isnan(ecgData)]  # Remove NaN values
+    
+    return RTout, ecgData, classID
+
+
+def IBIClassification(RTT, Tw, Nsd, Tmax):
+    """
+    Classifies IBIs based on statistical thresholds.
+	%% IBIClassification Classifies IBIs based on statistical thresholds.
+	%
+	% Syntax:
+	%   classID = IBIClassification(RTT, Tw, Nsd, Tmax)
+	%
+	% Inputs:
+	%   RTT  - R-top times.
+	%   Tw   - Window length for moving average (default: 50 seconds).
+	%   Nsd  - Number of standard deviations for classification threshold (default: 4).
+	%   Tmax - Maximum duration for IBI (default: 5 seconds).
+	%
+	% Outputs:
+	%   classID - Classification of IBIs ('N', 'L', 'S', 'T', '1', '2').
+	%%Classification:
+	%
+	%   default params:
+	%       Tw = 50 (sec!) (###Implemented as 51 IBIs!###)
+	%       Nsd = 4 (sd)
+	%       T refractory = .3
+	%       Tmax = 5 (sec)
+	%
+	%%
+	%%
+	% Normal beat: Calculate mean IBI around current over time Tw -> avIBIr
+	%               Calculate the SD of this vaiable              -> SD(avIBIr)
+	%               if the value is within the Running average and Nsd times
+	%               the SD: This is a normal Beat
+	% else:
+	%       short beat: below this min value
+	%       long beat : above this max value
+	%
+	%% Additional Classifications: 
+	% vagal Inhibition (WARNING, no correction)
+	% vagal activation (WARNING, no correction)
+
+	%% Short followed by long:
+	% remove R-peak, interpolate (WARNING)
+
+	%% Short - Normal - Short
+	% Interpolate (WARNING) @AvR What??
+
+	%% Short Beat:
+	% if IBI < Trefractory: 
+	%   Remove R-peak 
+	% Is implemented in the findpeaks function
+	%% else:
+	%   if nFit = 1: remove R-Peak %% @AvR: Q1: what is nFit?
+	%   if nFit = 2: remove R-Peak, interpolate %  implemented
+	%   if else: No correction, unknown artefact
+
+	%% Long Beat:
+	% if IBI > Tmax: Split Block (WARNING)
+	% interpolate
+	%% Output Labels:
+	% N = Normal
+	% L = Long
+	% S = Short
+	% T = Too long (@AvR: to interpolate?)
+	% I = inhibition (NOT YET IMPLEMENTED)
+	% A =  Activation (NOT YET IMPLEMENTED)
+	% 1 = short-long 
+	% 2 = short-normal-short
+    """
+    IBI = np.diff(RTT)
+    classID = np.full(len(IBI) + 1, "N")  # The default
+
+    avIBIr = np.convolve(IBI, np.ones(Tw)/Tw, mode='valid')  # Moving average
+    SDavIBIr = np.std(IBI)  # Standard deviation of IBI
+
+    lower = avIBIr - (Nsd * SDavIBIr)
+    higher = avIBIr + (Nsd * SDavIBIr)
+
+    classID[IBI > higher] = "L"  # Long IBI
+    classID[IBI < lower] = "S"  # Short IBI
+    classID[IBI > Tmax] = "T"  # Too Long
+
+    for i in range(len(classID) - 1):
+        if classID[i] == "S" and classID[i + 1] == "L":
+            classID[i] = "1"  # Short-long sequence
+        if i < len(classID) - 2:
+            if classID[i] == "S" and classID[i + 1] == "N" and classID[i + 2] == "S":
+                classID[i] = "2"  # Short-normal-short sequence
+
+    # Display classification counts
+    for id_type in np.unique(classID):
+        print(f"Found {len(classID[classID == id_type])} {id_type} rtops")
+
+    return classID
